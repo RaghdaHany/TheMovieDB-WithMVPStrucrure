@@ -1,7 +1,7 @@
 package com.moneam.basemvp.base
 
-import com.moneam.basemvp.BuildConfig
-import com.moneam.basemvp.model.ActorsResponse
+import com.example.themoviedb_mvpstructure.BuildConfig
+import com.example.themoviedb_mvpstructure.model.ActorsResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
