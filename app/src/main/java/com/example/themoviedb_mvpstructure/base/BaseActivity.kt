@@ -1,4 +1,4 @@
-package com.moneam.basemvp.base
+package com.example.themoviedb_mvpstructure.base
 
 import android.os.Bundle
 import android.widget.Toast

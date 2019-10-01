@@ -1,17 +1,13 @@
 package com.example.themoviedb_mvpstructure.popular_people_package
 
+import com.example.themoviedb_mvpstructure.base.BaseContract
+import com.example.themoviedb_mvpstructure.model.ActorsResponse
 import com.example.themoviedb_mvpstructure.model.PopularPeople
-import com.moneam.basemvp.base.BaseContract
 
 interface PopularPeopleScreenContract {
 
     interface PopularPeopleViewInterface : BaseContract.BaseIView {
-        fun getList(): List<PopularPeople>?
-        fun getSearchState(): Boolean?
-
-        fun setPerson(person: PopularPeople)
-        fun settingAdapterInList()
-        fun notifyDataRemoved(size: Int)
+        fun addData(results: List<PopularPeople>)
     }
 
     interface PopularPeoplePresenterInterface : BaseContract.BaseIPresenter {
@@ -20,6 +16,10 @@ interface PopularPeopleScreenContract {
     }
 
     interface PopularPeopleRepositoryInterface : BaseContract.BaseIRepository {
-
+        fun getPopularPeople(
+            page: Int,
+            success: (response: ActorsResponse) -> Unit,
+            failure: (t: Throwable) -> Unit
+        )
     }
 }

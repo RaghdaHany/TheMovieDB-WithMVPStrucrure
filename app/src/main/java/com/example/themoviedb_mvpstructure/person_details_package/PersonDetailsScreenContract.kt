@@ -1,6 +1,6 @@
 package com.example.themoviedb_mvpstructure.popular_people_package
 
-import com.moneam.basemvp.base.BaseContract
+import com.example.themoviedb_mvpstructure.base.BaseContract
 
 interface PersonDetailsScreenContract {
 

@@ -1,4 +1,4 @@
-package com.moneam.basemvp.base
+package com.example.themoviedb_mvpstructure.base
 
 import com.example.themoviedb_mvpstructure.BuildConfig
 import com.example.themoviedb_mvpstructure.model.ActorsResponse
@@ -15,8 +15,8 @@ class RemoteDataSource {
     companion object {
         val Instance = RemoteDataSource()
 
-        private const val API_KEY = "3e68c56cf7097768305e38273efd342c"
         private const val PARAM_API_KEY = "api_key"
+        private const val API_KEY = "e6f20f39139b1f5a2be132cbaaa9ce43"
         private const val PARAM_PAGE = "page"
         private const val POPULAR_PEOPLE_URL = "person/popular"
         private const val TMDB_BAse_URL = "https://api.themoviedb.org/3/"

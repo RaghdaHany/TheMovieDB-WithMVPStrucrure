@@ -1,4 +1,4 @@
-package com.moneam.basemvp.base
+package com.example.themoviedb_mvpstructure.base
 
 abstract class BaseRepository : BaseContract.BaseIRepository {
     val remoteDataSource = RemoteDataSource.Instance

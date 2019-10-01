@@ -1,11 +1,12 @@
-package com.moneam.basemvp.base
+package com.example.themoviedb_mvpstructure.base
 
 abstract class BasePresenter<View : BaseContract.BaseIView,
         Repository : BaseContract.BaseIRepository>(
 
     var view: View?,
     val repository: Repository
-) : BaseContract.BaseIPresenter {
+
+    ) : BaseContract.BaseIPresenter {
 
     abstract override fun onViewReady()
 

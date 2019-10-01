@@ -14,8 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".person_full_image_package.PersonImageActivity"></activity>
         <activity android:name=".person_details_package.PersonDetailsActivity" />
-        <activity android:name=".popular_people_package.PopularPeopleActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".popular_people_package.PopularPeopleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
