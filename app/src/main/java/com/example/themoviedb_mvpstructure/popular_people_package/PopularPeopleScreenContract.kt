@@ -7,7 +7,11 @@ import com.example.themoviedb_mvpstructure.model.PopularPeople
 interface PopularPeopleScreenContract {
 
     interface PopularPeopleViewInterface : BaseContract.BaseIView {
-        fun addData(results: List<PopularPeople>)
+        fun addData(results: MutableList<PopularPeople>)
+        fun getList(): List<PopularPeople>?
+        fun notifyDataRemoved(size: Int)
+        fun settingAdapterInList()
+        fun deleteAdapterData()
     }
 
     interface PopularPeoplePresenterInterface : BaseContract.BaseIPresenter {

@@ -38,18 +38,16 @@ class PopularPeopleAdapter(val getImage: (url: String, id: Int) -> Unit,
         notifyDataSetChanged()
     }
 
-    fun updateImage(id: Int, image: Image) {
-        list.firstOrNull {
-            it.id == id
-        }?.image = image
-        notifyDataSetChanged()
+    fun clearAdapter() {
+        list.clear()
     }
 
     inner class ActorViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(actor: PopularPeople) {
             with(view) {
                 person_name.text = actor.name
-                known_for_department.text = actor.popularity.toString()
+                popularity.text = actor.popularity.toString()
+                known_for_department.text = actor.knownForDepartment
 
                 Picasso.with(context).load(PROFILE_IMAGE_URL + actor.profilePath)
                     .placeholder(R.drawable.ic_launcher_background)

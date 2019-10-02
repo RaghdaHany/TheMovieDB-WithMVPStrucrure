@@ -1,6 +1,7 @@
 package com.example.themoviedb_mvpstructure.popular_people_package
 
 import com.example.themoviedb_mvpstructure.base.BasePresenter
+import com.example.themoviedb_mvpstructure.model.PopularPeople
 
 class PopularPeoplePresenter(
     view: PopularPeopleScreenContract.PopularPeopleViewInterface?,
@@ -10,25 +11,51 @@ class PopularPeoplePresenter(
             PopularPeopleScreenContract.PopularPeopleRepositoryInterface>(view, repository){
 
     private var page = 1
+    var peopleList: MutableList<PopularPeople>? = null
+
     override fun onViewReady() {
         loadData()
     }
 
-    fun loadNextPage() {
-        page++
-        loadData()
-    }
-
-    private fun loadData() {
+     fun loadData() {
         view!!.showLoading()
         repository.getPopularPeople(page,
             success = {
                 view!!.hideLoading()
-                view!!.addData(it.results)
+                view!!.addData(it.results as MutableList<PopularPeople>)
             },
             failure = {
                 view!!.hideLoading()
                 view!!.showError(it.message!!)
             })
+    }
+
+    fun loadNextPage() {
+        page = page + 1
+        loadData()
+    }
+
+
+    fun callSwipeFunction() {
+        peopleList = view!!.getList() as MutableList<PopularPeople>?
+        this.clearList()
+        page = 1
+        loadData()
+
+    }
+
+    fun clearList() {
+        peopleList = view?.getList() as MutableList<PopularPeople>?
+        val size = peopleList?.size
+        if (size != null) {
+            if (size > 0) {
+                for (i in 0 until size) {
+                    peopleList?.removeAt(0)
+                }
+                view?.notifyDataRemoved(size)
+            }
+        }
+        view?.deleteAdapterData()
+        peopleList?.clear()
     }
 }

@@ -21,7 +21,7 @@ class PopularPeopleRepository : BaseRepository(), PopularPeopleScreenContract.Po
                     t: Throwable
                 ) {
                     if (t is IOException) {
-                        failure(RuntimeException("No internet connection"))
+                        failure(RuntimeException("No internet connection") as Throwable)
                     } else {
                         failure(t)
                     }
