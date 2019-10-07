@@ -2,6 +2,7 @@ package com.example.themoviedb_mvpstructure.popular_people_package
 
 import com.example.themoviedb_mvpstructure.base.BaseRepository
 import com.example.themoviedb_mvpstructure.model.ActorsResponse
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,7 +22,7 @@ class PopularPeopleRepository : BaseRepository(), PopularPeopleScreenContract.Po
                     t: Throwable
                 ) {
                     if (t is IOException) {
-                        failure(RuntimeException("No internet connection") as Throwable)
+                        failure(RuntimeException("No internet connection"))
                     } else {
                         failure(t)
                     }
@@ -39,5 +40,10 @@ class PopularPeopleRepository : BaseRepository(), PopularPeopleScreenContract.Po
                 }
 
             })
+    }
+
+
+    override fun getPopularPeople(page: Int): Single<ActorsResponse> {
+        return remoteDataSource.api.getPopularPeopleObservable(page)
     }
 }

@@ -2,6 +2,7 @@ package com.example.themoviedb_mvpstructure.popular_people_package
 
 import com.example.themoviedb_mvpstructure.base.BasePresenter
 import com.example.themoviedb_mvpstructure.model.PopularPeople
+import io.reactivex.functions.Consumer
 
 class PopularPeoplePresenter(
     view: PopularPeopleScreenContract.PopularPeopleViewInterface?,
@@ -18,16 +19,12 @@ class PopularPeoplePresenter(
     }
 
      fun loadData() {
-        view!!.showLoading()
-        repository.getPopularPeople(page,
-            success = {
-                view!!.hideLoading()
-                view!!.addData(it.results as MutableList<PopularPeople>)
-            },
-            failure = {
-                view!!.hideLoading()
-                view!!.showError(it.message!!)
-            })
+
+         subscribe(repository.getPopularPeople(page),
+             Consumer {
+                 view!!.addData(it.results as MutableList<PopularPeople>)
+             }
+         )
     }
 
     fun loadNextPage() {
@@ -57,5 +54,10 @@ class PopularPeoplePresenter(
         }
         view?.deleteAdapterData()
         peopleList?.clear()
+    }
+
+    fun callFirstPage() {
+        page = 1
+        loadData()
     }
 }

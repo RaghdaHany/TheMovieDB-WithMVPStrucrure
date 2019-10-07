@@ -12,6 +12,18 @@
         android:id="@+id/recyclerViewId"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_no_internet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="No Internet Connection\n click to retry "
+        android:textColor="@color/colorPrimary"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

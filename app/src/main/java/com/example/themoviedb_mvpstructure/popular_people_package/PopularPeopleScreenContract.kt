@@ -3,6 +3,7 @@ package com.example.themoviedb_mvpstructure.popular_people_package
 import com.example.themoviedb_mvpstructure.base.BaseContract
 import com.example.themoviedb_mvpstructure.model.ActorsResponse
 import com.example.themoviedb_mvpstructure.model.PopularPeople
+import io.reactivex.Single
 
 interface PopularPeopleScreenContract {
 
@@ -25,5 +26,7 @@ interface PopularPeopleScreenContract {
             success: (response: ActorsResponse) -> Unit,
             failure: (t: Throwable) -> Unit
         )
+
+        fun getPopularPeople(page: Int): Single<ActorsResponse>
     }
 }

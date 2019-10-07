@@ -61,11 +61,17 @@ class PopularPeopleActivity : BaseActivity<PopularPeoplePresenter>(),
             recyclerViewId.visibility = View.VISIBLE
             mSwipeRefreshLayout.isRefreshing = false
         }
+
+        tv_no_internet.setOnClickListener {
+            presenter.callFirstPage()
+        }
     }
 
     override fun addData(results: MutableList<PopularPeople>) {
         adapter.add(results)
         this.settingAdapterInList()
+        recyclerViewId.visibility = View.VISIBLE
+        tv_no_internet.visibility = View.GONE
     }
 
     override fun getList(): List<PopularPeople>? {
@@ -84,5 +90,10 @@ class PopularPeopleActivity : BaseActivity<PopularPeoplePresenter>(),
 
     override fun deleteAdapterData() {
       adapter.clearAdapter()
+    }
+
+    override fun showNoInternetConnection() {
+        recyclerViewId.visibility = View.GONE
+        tv_no_internet.visibility = View.VISIBLE
     }
 }
